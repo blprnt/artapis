@@ -49,7 +49,7 @@ def doWordCount(w):
 #This is a message that gets sent to anyone hitting the main api.blprnt.com url.
 @app.route("/")
 def hello():
-   return ("Currently available APIS: \n \n /wordcount/WORD \n /drones/laststrikg \n /dronetwitter/USER")
+   return ("<html><head><title>Look! Some APIs!</title></head><body>Currently available APIs: <ul><li>/wordcount/WORD</li><li>/drones/laststrikg</li><li>/dronetwitter/USER</li></ul></body></html>")
 
 #Wordcount endpoint
 @app.route("/wordcount/<word>")
