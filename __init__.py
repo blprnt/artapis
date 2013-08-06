@@ -35,7 +35,7 @@ app.debug = True
 
 #Word count method
 def doWordCount(w):
-	url = "http://news.bbc.co.uk/2/hi/health/2284783.stm"    
+	url = " http://blog.blprnt.com/blog/blprnt/the-api-as-art-object"    
 	html = urlopen(url).read()    
 	raw = nltk.clean_html(html)  
 
