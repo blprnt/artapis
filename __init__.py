@@ -52,10 +52,10 @@ def lastStrike():
 def twitter(username):
 	
 	out = {'success':False};
-	APP_KEY = "94J2gNvpQiK7F7O9KO9A"
-	APP_SECRET= "H8G6frJYpwADYUaZiVZChutyRxRAzq6NTJWrbqtqis"
-	OAUTH_TOKEN = "17013577-tY3SAM76bzlcgaBQKeZYa1pP1Ve9uF7tkLfiSTRoM"
-	OAUTH_TOKEN_SECRET = "p7e2wQw61AxmDDJWDacRGEVGlrZSSCMltfrlrBpQ"
+	APP_KEY = "YOUR KEY HERE"
+	APP_SECRET= "YOUR SECRET HERE"
+	OAUTH_TOKEN = "YOUR TOKEN HERE"
+	OAUTH_TOKEN_SECRET = "YOUR TOKEN SECRET HERE"
 	# Requires Authentication as of Twitter API v1.1
 	twitter = Twython(APP_KEY, APP_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
 	try:
