@@ -1,3 +1,22 @@
+#------------------------------------------------------------
+# August 6, 2013
+# These files are a VERY SIMPLE build of an API system in Flask, made for a demo in this post:
+# http://blog.blprnt.com/blog/blprnt/the-api-as-art-object
+#------------------------------------------------------------
+#
+# To actually run these files (you probably don't want to), you'll need Flask, as well as NLTK & Twython
+#
+# Oh, and FlaskCache.
+#
+# -Jer
+#
+#
+#
+#
+#
+#
+
+
 import nltk   
 from nltk.probability import FreqDist
 import urllib2
@@ -9,6 +28,7 @@ from twython import Twython, TwythonError
 
 from flask.ext.cache import Cache
 
+#Set up cache as to limit the calls to the Twitter API.
 app = Flask(__name__)
 cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 app.debug = True
@@ -26,17 +46,19 @@ def doWordCount(w):
 	return fd[w]
 
 
+#This is a message that gets sent to anyone hitting the main api.blprnt.com url.
 @app.route("/")
 def hello():
-   return ("Currently available APIS: \n \n /wordcount/WORD")
+   return ("Currently available APIS: \n \n /wordcount/WORD \n /drones/laststrikg \n /dronetwitter/USER")
 
-
+#Wordcount endpoint
 @app.route("/wordcount/<word>")
 def countIt(word):
    wc = doWordCount(word)
    print word
    return simplejson.dumps({'word':word, 'count':wc})
 
+#Last Drone Strike endpoint
 @app.route("/drones/laststrike")
 def lastStrike():
 	req = urllib2.Request("http://api.dronestre.am/data")
@@ -47,6 +69,7 @@ def lastStrike():
 	out =  simplejson.dumps(lastStrike, sort_keys=True, indent=4 * ' ')
 	return out
 
+#Twitter user - drone strike endpoint
 @cache.cached(timeout=100)
 @app.route("/dronetwitter/<username>")
 def twitter(username):
